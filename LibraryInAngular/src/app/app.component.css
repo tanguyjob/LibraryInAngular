@@ -1,0 +1,24 @@
+* {
+  color: white;
+}
+
+header {
+  background-color: blue;
+  height: 55px;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+}
+
+h4 {
+  text-align: center;
+}
+
+.mbody {
+  top: 0px;
+  height: 1500px;
+  margin: 0px;
+  padding: 0px;
+  border: hidden;
+  background-image: url("../assets/images/futur.jpg");
+}
