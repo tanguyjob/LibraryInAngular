@@ -5,18 +5,10 @@ et à essayer sans le save-->
   </header>
 
   <div class="mbody">
-    <div class="bg-dark">
-      <div class="row">
-        <div class="col-12">
-          <h1 class="mt-4"><a href="home" style="color: white">La futurothèque</a></h1>
+    <app-top-bar></app-top-bar>
+    <div class="container">
+        <div class="routeroutlet bg-dark mx-auto">
+     <router-outlet></router-outlet>
         </div>
-        <div class="row">
-          <div class="container m-4">
-            <ul>
-              <li class="nav-item cola"><a class="nava nav-link" routerLinkActive="linkActive" routerLink="home">Home</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
