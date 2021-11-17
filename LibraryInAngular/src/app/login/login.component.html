@@ -1,0 +1,20 @@
+<div class="p-2 border">
+    <h5>Login</h5>
+    <div *ngIf="isAuth">
+        <div class="row">
+            <div class="col-md-6">
+                <button class="btn btn-danger" (click)="onLogout()">Logout</button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!isAuth">
+        <form (ngSubmit)="onLogin(f)" #f="ngForm">
+            Login: <input name="login" type="text" ngModel required />
+            <br />
+            Password: <input name="password" type="password" ngModel required />
+            <br />
+            <button type="submit" [disabled]="f.invalid">Sign In</button>
+        </form>
+    
+    </div>
+    </div>

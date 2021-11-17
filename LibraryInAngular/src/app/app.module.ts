@@ -10,13 +10,28 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CartMenuComponent } from './cart-menu/cart-menu.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { CatalogComponent } from './catalog/catalog.component';
+import { BookComponent } from './book/book.component';
+import { LoginComponent } from './login/login.component';
+import { CartComponent } from './cart/cart.component';
+import { OrderedComponent } from './ordered/ordered.component';
+import { AuthentificationService } from './services/authentification.service';
+import { AuthgardService } from './services/authgard.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     CartMenuComponent,
     TopBarComponent,
-    HomeComponent
+    HomeComponent,
+    NotFoundComponent,
+    CatalogComponent,
+    BookComponent,
+    LoginComponent,
+    CartComponent,
+    OrderedComponent
   ],
   imports: [
     BrowserModule,
@@ -26,11 +41,17 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent},
-      { path: 'home', component: HomeComponent}
-
+      { path: 'home', component: HomeComponent},
+      { path: 'catalog', component: CatalogComponent},
+      { path: 'book/:id', component: BookComponent},
+      { path: 'login', component: LoginComponent},
+      { path:'cart', canActivate:[AuthgardService], component: CartComponent},
+      { path:'ordered', component: OrderedComponent},
+      { path: 'notfound', component: NotFoundComponent},
+      { path:'**', redirectTo: 'notfound'}
     ])
   ],
-  providers: [],
+  providers: [AuthentificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
