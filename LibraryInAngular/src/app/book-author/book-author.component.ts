@@ -1,21 +1,22 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CartService } from '../services/cart.service';
 import { AuthentificationService } from '../services/authentification.service';
 import { Subscription } from 'rxjs';
-import { BookModel } from '../models/BookModel';
+import { BookAuthorModel } from '../models/BookAuthorModel';
 import { BookService } from '../services/book.service';
 
+
 @Component({
-  selector: 'app-book',
-  templateUrl: './book.component.html',
-  styleUrls: ['./book.component.css']
+  selector: 'app-book-author',
+  templateUrl: './book-author.component.html',
+  styleUrls: ['./book-author.component.css']
 })
-export class BookComponent implements OnInit, OnDestroy {
-book!: BookModel;
+export class BookAuthorComponent implements OnInit {
+bas: BookAuthorModel[]=[];
 subscr!: Subscription;
-subs!: Subscription;
+subscr2!: Subscription;
 closeModal!: string;
 isAuth!:boolean;
 
@@ -28,8 +29,7 @@ isAuth!:boolean;
     private bookService: BookService
   ) { }
 
-/*
-addToCart(content: any, book: any){
+  /*addToCart(content: any, book: any){
  //ajouter au panier
   if (this.cartService.addToCart(book))
   {
@@ -43,8 +43,8 @@ addToCart(content: any, book: any){
   // revenir à book
   this.router.navigate(['catalog']);
   }
-  
-private getDismissReason(reason: any): string {
+
+  private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
@@ -52,28 +52,25 @@ private getDismissReason(reason: any): string {
     } else {
       return  `with: ${reason}`;
     }
-  }
-*/
+  }*/
 
   ngOnInit(): void {
-    /*this.subs = this.authSrv.getIsAuthObs().subscribe(
+   /* this.subscr = this.authSrv.getIsAuthObs().subscribe(
       (v)=> {
         this.isAuth=v;
       }
-    );
-*/
+    );*/
 
+     const id = this.route.snapshot.params['id'];
+      this.bookService.getBookAuthorById(id).subscribe(
+ (value)=> this.bas=value
+ );
 
-    const id = this.route.snapshot.params['id'];
-      this.subscr = this.bookService.getBook(+id).subscribe(
-        (value)=>this.book=value,
-        (error)=> { console.log('error http call'+ error.message)}
-      )
   }
-  ngOnDestroy(): void {
-    this.subs.unsubscribe();
+
+   ngOnDestroy(): void {
+    this.subscr2.unsubscribe();
     this.subscr.unsubscribe();
   }
-
 
 }

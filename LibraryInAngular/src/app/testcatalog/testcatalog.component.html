@@ -1,0 +1,44 @@
+<!-- <p>testcatalog works!</p>
+<div *ngFor="let book of books">
+    <p>hey</p>
+    {{ book.title }} {{ book.id}} {{ book.resume }}
+</div> -->
+
+
+
+<!-- <p> les écrivains</p>
+<div *ngFor="let writer of writers">
+    <p>les writers</p>
+    {{ writer.name }}
+</div> -->
+
+
+<p>----------------------------------</p>
+
+<p>Bookwriter</p>
+<div *ngFor="let bookWriter of bookWriters">
+    <p>{{ bookWriter.title }} - {{ bookWriter.name }}</p>
+</div>
+
+<p>---------------------------------</p>
+
+<p>User Address</p>
+<div *ngFor="let userAdd of userAddresses">
+    <p>{{ userAdd.name}} - {{ userAdd.street }} </p>
+</div>
+
+
+<p>--------</p>
+<p>bookwriter by id</p>
+<div *ngFor="let us of bookWritersById">
+<p>{{ us.title }} - {{ us.name }}</p>
+</div>
+
+<p>****************************</p>
+<h1>book author</h1>
+<div *ngFor="let ba of bookAuthor">
+    <p>coucou</p>
+    <p>{{ ba.title }} </p>
+    <p>{{ ba.resume }}</p>
+</div>
+

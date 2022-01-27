@@ -1,0 +1,41 @@
+
+
+<!--<h1>book author</h1>
+<div *ngFor="let ba of bookAuthors">
+    <p>{{ ba.title }} </p>
+    <p>{{ ba.resume }}</p>
+</div>-->
+<div class="m-5">
+
+    <h3>Catalogue2</h3>
+    <div class="row line pb-4 mt-5">
+        <div class="col-6">
+            <h5>Titre</h5>
+        </div>
+        <div class="col-3">
+            <h5>Nom</h5>
+        </div>
+        <div class="col-3">
+            <h5>Prenom</h5>
+        </div>
+    </div>
+
+
+    <div class="line mt-3" *ngFor="let ba of bookAuthors">
+        <a routerLink="/book-author/{{ ba.bookId }}">
+            <div class="row">
+                <div class="col-6">
+                    {{ ba.title }}
+                </div>
+
+                <div class="col-3">
+                    {{ ba.name }}
+                </div>
+
+                <div class="col-3">
+                    {{ ba.firstname }}
+                </div>
+            </div>
+        </a>
+    </div>
+</div>

@@ -18,6 +18,10 @@ import { CartComponent } from './cart/cart.component';
 import { OrderedComponent } from './ordered/ordered.component';
 import { AuthentificationService } from './services/authentification.service';
 import { AuthgardService } from './services/authgard.service';
+import { TestcatalogComponent } from './testcatalog/testcatalog.component';
+import { CatalogdeuxComponent } from './catalogdeux/catalogdeux.component';
+import { BookAuthorComponent } from './book-author/book-author.component';
+import { BookAuthorModel } from './models/BookAuthorModel';
 
 
 @NgModule({
@@ -31,7 +35,10 @@ import { AuthgardService } from './services/authgard.service';
     BookComponent,
     LoginComponent,
     CartComponent,
-    OrderedComponent
+    OrderedComponent,
+    TestcatalogComponent,
+    CatalogdeuxComponent,
+    BookAuthorComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +54,9 @@ import { AuthgardService } from './services/authgard.service';
       { path: 'login', component: LoginComponent},
       { path:'cart', canActivate:[AuthgardService], component: CartComponent},
       { path:'ordered', component: OrderedComponent},
+      { path:'test', component:TestcatalogComponent },
+      { path:'c2', component: CatalogdeuxComponent}, 
+      { path:'book-author/:id', component: BookAuthorComponent },
       { path: 'notfound', component: NotFoundComponent},
       { path:'**', redirectTo: 'notfound'}
     ])
