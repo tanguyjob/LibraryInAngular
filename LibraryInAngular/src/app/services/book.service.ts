@@ -5,6 +5,7 @@ import { UtilService } from './util.service';
 // a effacer
 import { BookModel2 } from '../models/BookModel2';
 import { BookAuthorModel } from '../models/BookAuthorModel';
+import { LanguageModel} from '../models/LanguageModel';
 
 @Injectable({
   providedIn: 'root'
@@ -62,6 +63,10 @@ getBookAuthor() {
 
 getBookAuthorById(id: number) {
   return this.http.get<BookAuthorModel[]>("https://localhost:44334/api/Library/ProcedureBookAuthorById?id=" + id);
+}
+
+getLanguageById(id: number) {
+  return this.http.get<LanguageModel>("https://localhost:44334/api/Library/Language?id="+ id);
 }
 
 }

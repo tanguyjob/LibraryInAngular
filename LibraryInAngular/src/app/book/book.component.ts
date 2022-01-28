@@ -70,6 +70,7 @@ private getDismissReason(reason: any): string {
         (error)=> { console.log('error http call'+ error.message)}
       )
   }
+  
   ngOnDestroy(): void {
     this.subs.unsubscribe();
     this.subscr.unsubscribe();

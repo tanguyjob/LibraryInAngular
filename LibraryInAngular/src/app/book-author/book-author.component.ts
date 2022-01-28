@@ -1,3 +1,7 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { publishBehavior, take } from 'rxjs/operators';
 import { Component, OnInit,OnDestroy } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -6,6 +10,7 @@ import { AuthentificationService } from '../services/authentification.service';
 import { Subscription } from 'rxjs';
 import { BookAuthorModel } from '../models/BookAuthorModel';
 import { BookService } from '../services/book.service';
+import { LanguageModel } from '../models/LanguageModel';
 
 
 @Component({
@@ -19,6 +24,7 @@ subscr!: Subscription;
 subscr2!: Subscription;
 closeModal!: string;
 isAuth!:boolean;
+language!:LanguageModel;
 
   constructor(
     private authSrv: AuthentificationService,
@@ -29,9 +35,10 @@ isAuth!:boolean;
     private bookService: BookService
   ) { }
 
-  /*addToCart(content: any, book: any){
+  addToCart(content: any, ba: any){
  //ajouter au panier
-  if (this.cartService.addToCart(book))
+ this.cartService.addToCart(ba);
+  if (this.cartService.addToCart(ba))
   {
     //modal
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
@@ -41,7 +48,7 @@ isAuth!:boolean;
     });
   }
   // revenir à book
-  this.router.navigate(['catalog']);
+  this.router.navigate(['c2']);
   }
 
   private getDismissReason(reason: any): string {
@@ -52,20 +59,29 @@ isAuth!:boolean;
     } else {
       return  `with: ${reason}`;
     }
-  }*/
+  }
 
   ngOnInit(): void {
-   /* this.subscr = this.authSrv.getIsAuthObs().subscribe(
+    this.subscr = this.authSrv.getIsAuthObs().subscribe(
       (v)=> {
         this.isAuth=v;
       }
-    );*/
+    );
+
+
+       this.subscr2 = this.bookService.getLanguageById(1).subscribe(
+        (value)=>this.language=value,
+        (error)=> { console.log('error http call'+ error.message)}
+      );
+  
+
+
 
      const id = this.route.snapshot.params['id'];
-      this.bookService.getBookAuthorById(id).subscribe(
- (value)=> this.bas=value
+      this.bookService.getBookAuthorById(+id).subscribe(
+ (value)=> this.bas=value,
+  (error)=> { console.log('error http call'+ error.message)}
  );
-
   }
 
    ngOnDestroy(): void {

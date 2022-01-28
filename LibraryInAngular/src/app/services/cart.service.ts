@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
-
+import { BookAuthorModel } from '../models/BookAuthorModel';
 
 @Injectable({
   providedIn: 'root'
@@ -22,15 +22,14 @@ package=true;
 getPackage() {
   return this.package;
 }
-
-addToCart(book:any) {
+addToCart(ba:any) {
 
 if (this.items.length !== 0)
 {
-  var isPresent = this.items.some(function(el){ return el.id === book.id});
+  var isPresent = this.items.some(function(el){ return el.id === ba.bookId});
   if (!isPresent)
   {
-    this.items.push(book);
+    this.items.push(ba);
      this.basketcounter$.next(this.items.length);
      return true;
   }
@@ -40,12 +39,36 @@ if (this.items.length !== 0)
   }
 }
 else {
-  this.items.push(book);
+  this.items.push(ba);
    this.basketcounter$.next(this.items.length);
    return true
   }
  
 }
+
+// addToCart(book:any) {
+
+// if (this.items.length !== 0)
+// {
+//   var isPresent = this.items.some(function(el){ return el.id === book.id});
+//   if (!isPresent)
+//   {
+//     this.items.push(book);
+//      this.basketcounter$.next(this.items.length);
+//      return true;
+//   }
+//   else
+//   {
+//     return false;
+//   }
+// }
+// else {
+//   this.items.push(book);
+//    this.basketcounter$.next(this.items.length);
+//    return true
+//   }
+ 
+// }
 
 getItems() {
   return this.items;
