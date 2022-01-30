@@ -31,4 +31,9 @@ radioChangeHandler(event: any) {
 commander() {
   this.router.navigate(['ordered']);
 }
+
+delete() {
+  this.cartService.deleteCart();
+  this.router.navigate(['catalog']);
+}
 }

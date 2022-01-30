@@ -6,6 +6,8 @@ import { UtilService } from './util.service';
 import { BookModel2 } from '../models/BookModel2';
 import { BookAuthorModel } from '../models/BookAuthorModel';
 import { LanguageModel} from '../models/LanguageModel';
+import { AuthorModel } from '../models/AuthorModel';
+import { identifierName } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -67,6 +69,19 @@ getBookAuthorById(id: number) {
 
 getLanguageById(id: number) {
   return this.http.get<LanguageModel>("https://localhost:44334/api/Library/Language?id="+ id);
+}
+
+getAuthors() {
+  return this.http.get<AuthorModel[]>("https://localhost:44334/api/Library/Authors");
+}
+
+getOneAuthor(id: number) {
+  return this.http.get<AuthorModel>("https://localhost:44334/api/Library/Author?id="+id);
+}
+
+getBookByAuthorId(id:number)
+{
+  return this.http.get<BookAuthorModel[]>("https://localhost:44334/api/Library/ProcedureBookByAuthorId?Id="+id);
 }
 
 }

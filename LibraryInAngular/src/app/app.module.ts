@@ -22,6 +22,9 @@ import { TestcatalogComponent } from './testcatalog/testcatalog.component';
 import { CatalogdeuxComponent } from './catalogdeux/catalogdeux.component';
 import { BookAuthorComponent } from './book-author/book-author.component';
 import { BookAuthorModel } from './models/BookAuthorModel';
+import { AuthorComponent } from './author/author.component';
+import { AuthorDetailComponent } from './author-detail/author-detail.component';
+
 
 
 @NgModule({
@@ -38,7 +41,9 @@ import { BookAuthorModel } from './models/BookAuthorModel';
     OrderedComponent,
     TestcatalogComponent,
     CatalogdeuxComponent,
-    BookAuthorComponent
+    BookAuthorComponent,
+    AuthorComponent,
+    AuthorDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +54,7 @@ import { BookAuthorModel } from './models/BookAuthorModel';
     RouterModule.forRoot([
       { path: '', component: HomeComponent},
       { path: 'home', component: HomeComponent},
+      { path:'author-detail/:id', component: AuthorDetailComponent},
       { path: 'catalog', component: CatalogComponent},
       { path: 'book/:id', component: BookComponent},
       { path: 'login', component: LoginComponent},
@@ -56,6 +62,7 @@ import { BookAuthorModel } from './models/BookAuthorModel';
       { path:'ordered', component: OrderedComponent},
       { path:'test', component:TestcatalogComponent },
       { path:'c2', component: CatalogdeuxComponent}, 
+      { path:'author', component: AuthorComponent},
       { path:'book-author/:id', component: BookAuthorComponent },
       { path: 'notfound', component: NotFoundComponent},
       { path:'**', redirectTo: 'notfound'}

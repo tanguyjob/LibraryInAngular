@@ -1,8 +1,7 @@
 <div class="p-5">
-    <div *ngFor="let ba of bas">
-       
+
        <div class="row">          
-            <h1>{{ ba.title }}</h1>
+            <h1>{{ this.oneBookAuthor.title }}</h1>
         </div>   
        
         <div class="row pt-5">
@@ -11,23 +10,23 @@
            </h5>
            
             <h5 class="col-2">
-                 {{ ba.name }}
+                 {{ this.oneBookAuthor.name }}
             </h5>
             <h5 class="col-2">
-                {{ ba.firstname }}
+                {{ this.oneBookAuthor.firstname }}
             </h5>
             <h5 class="col-2">
-                {{ ba.birthDate | date: "dd/MM/yyyy" }}
+                {{ this.oneBookAuthor.birthDate | date: "dd/MM/yyyy" }}
             </h5>
         </div>
         
-        <div class="resume mt-5">{{ ba.resume }}</div>
+        <div class="resume mt-5">{{ this.oneBookAuthor.resume }}</div>
             
         
         
-        <p class="mt-3">Langue: {{ language.nameLanguage }}</p>
+       <p class="mt-3">Langue: {{ language.nameLanguage }}</p>
 
-        <button type="button" class="btn btn-secondary mt-5" [disabled]="!isAuth" (click)="addToCart(modalData,ba)">Ajouter au
+        <button type="button" class="btn btn-secondary mt-5" [disabled]="!isAuth" (click)="addToCart(modalData,this.oneBookAuthor)">Ajouter au
             panier</button>
             
 <ng-template #modalData let-modal>
@@ -37,6 +36,6 @@
         <button type="button" class="btn btn-secondary" (click)="modal.close('Save click')">OK</button>
     </div>
 </ng-template>
-</div>
+
         </div>
 

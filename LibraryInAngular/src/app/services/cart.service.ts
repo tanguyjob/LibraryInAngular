@@ -38,6 +38,7 @@ if (this.items.length !== 0)
     return false;
   }
 }
+
 else {
   this.items.push(ba);
    this.basketcounter$.next(this.items.length);
@@ -45,6 +46,15 @@ else {
   }
  
 }
+
+
+
+deleteCart() {
+  this.items = [];
+  this.basketcounter$.next(this.items.length);
+}
+
+
 
 // addToCart(book:any) {
 

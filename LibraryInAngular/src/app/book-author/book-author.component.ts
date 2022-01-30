@@ -19,6 +19,7 @@ import { LanguageModel } from '../models/LanguageModel';
   styleUrls: ['./book-author.component.css']
 })
 export class BookAuthorComponent implements OnInit {
+oneBookAuthor!: BookAuthorModel;
 bas: BookAuthorModel[]=[];
 subscr!: Subscription;
 subscr2!: Subscription;
@@ -37,7 +38,6 @@ language!:LanguageModel;
 
   addToCart(content: any, ba: any){
  //ajouter au panier
- this.cartService.addToCart(ba);
   if (this.cartService.addToCart(ba))
   {
     //modal
@@ -48,7 +48,7 @@ language!:LanguageModel;
     });
   }
   // revenir à book
-  this.router.navigate(['c2']);
+  this.router.navigate(['catalog']);
   }
 
   private getDismissReason(reason: any): string {
@@ -62,24 +62,23 @@ language!:LanguageModel;
   }
 
   ngOnInit(): void {
+  
+       this.subscr2 = this.bookService.getLanguageById(1).subscribe(
+        (value)=>this.language=value,
+        (error)=> { console.log('error http call'+ error.message)}
+      );
+    
+    
     this.subscr = this.authSrv.getIsAuthObs().subscribe(
       (v)=> {
         this.isAuth=v;
       }
     );
 
-
-       this.subscr2 = this.bookService.getLanguageById(1).subscribe(
-        (value)=>this.language=value,
-        (error)=> { console.log('error http call'+ error.message)}
-      );
-  
-
-
-
      const id = this.route.snapshot.params['id'];
       this.bookService.getBookAuthorById(+id).subscribe(
- (value)=> this.bas=value,
+ (value)=> {this.bas=value;
+            this.oneBookAuthor=this.bas[0]},
   (error)=> { console.log('error http call'+ error.message)}
  );
   }
