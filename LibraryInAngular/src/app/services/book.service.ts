@@ -7,6 +7,7 @@ import { BookModel2 } from '../models/BookModel2';
 import { BookAuthorModel } from '../models/BookAuthorModel';
 import { LanguageModel} from '../models/LanguageModel';
 import { AuthorModel } from '../models/AuthorModel';
+import { UserBOModel } from '../models/UserBOModel'
 import { identifierName } from '@angular/compiler';
 
 @Injectable({
@@ -83,5 +84,8 @@ getBookByAuthorId(id:number)
 {
   return this.http.get<BookAuthorModel[]>("https://localhost:44334/api/Library/ProcedureBookByAuthorId?Id="+id);
 }
+
+
+
 
 }

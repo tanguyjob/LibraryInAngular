@@ -1,13 +1,24 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { UserBOModel } from '../models/UserBOModel'; 
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthentificationService {
-private isAuth:boolean;
+//ajouter
+
+
+
+//----------------
+  private isAuth:boolean;
 isAuth$!: BehaviorSubject<boolean>;
-  constructor() {
+
+  constructor(
+    private http: HttpClient
+  ) {
     this.isAuth=true;
     this.isAuth$= new BehaviorSubject<boolean>(this.isAuth);
    }
@@ -38,6 +49,20 @@ isAuth$!: BehaviorSubject<boolean>;
     this.isAuth=false;
     this.isAuth$.next(this.isAuth);
   }
+
+
+
+  //ajouter
+  getUserBO()
+{
+  return this.http.get<UserBOModel[]>("https://localhost:44334/api/Library/ProcedureUserBO");
+}
+
+
+  getUserBOById(id:number)
+{
+  return this.http.get<UserBOModel[]>("https://localhost:44334/api/Library/ProcedureUserBOById?Id=1");
+}
 
 
 

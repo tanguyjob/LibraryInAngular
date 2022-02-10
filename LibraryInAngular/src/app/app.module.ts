@@ -24,7 +24,7 @@ import { BookAuthorComponent } from './book-author/book-author.component';
 import { BookAuthorModel } from './models/BookAuthorModel';
 import { AuthorComponent } from './author/author.component';
 import { AuthorDetailComponent } from './author-detail/author-detail.component';
-import { ProfilComponent } from './profil/profil.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -45,7 +45,8 @@ import { ProfilComponent } from './profil/profil.component';
     BookAuthorComponent,
     AuthorComponent,
     AuthorDetailComponent,
-    ProfilComponent,
+
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +67,7 @@ import { ProfilComponent } from './profil/profil.component';
       { path:'c2', component: CatalogdeuxComponent}, 
       { path:'author', component: AuthorComponent},
       { path:'book-author/:id', component: BookAuthorComponent },
-      { path: 'profil', canActivate:[AuthgardService], component: ProfilComponent },
+      { path: 'profile', canActivate:[AuthgardService], component: ProfileComponent },
       { path: 'notfound', component: NotFoundComponent},
       { path:'**', redirectTo: 'notfound'}
     ])
