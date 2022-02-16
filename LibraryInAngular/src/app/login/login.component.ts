@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
      this.isAuth = this.authSrv.isAuthentificate();
 
-      this.authSrv.getUserBO().subscribe(
+     this.subscr=this.authSrv.getUserBO().subscribe(
       (value)=> this.userArray=value
     );
     //  this.http.get<UserBOModel[]>("https://localhost:44334/api/Library/ProcedureUserBO").subscribe(
@@ -57,8 +57,12 @@ export class LoginComponent implements OnInit {
     //   this.authSrv.signIn(form.value.login, form.value.password);
        this.isAuth= this.authSrv.isAuthentificate();
        const ru = this.route.snapshot.params['ru'];
-       if (ru != null)
+       if (ru != null){
          this.router.navigate([ru]);
+       }
+       else {
+         this.router.navigate(['profile']);
+       }
    }
   }
 
@@ -69,6 +73,9 @@ export class LoginComponent implements OnInit {
     this.isAuth = this.authSrv.isAuthentificate();
   }
 
+  ngOnDestroy() {
+    this.subscr.unsubscribe();
+  }
 
   
 }

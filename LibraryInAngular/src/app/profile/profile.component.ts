@@ -4,7 +4,6 @@ import { UserBOModel } from '../models/UserBOModel';
 import { AuthentificationService } from '../services/authentification.service';
 import { Subscription } from 'rxjs';
 
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -14,9 +13,16 @@ export class ProfileComponent implements OnInit {
 subscr!: Subscription;
 user?: UserBOModel;
   constructor(
-    private authService: AuthentificationService
+    private authService: AuthentificationService,
+      private router: Router,
   ) { }
 
+ onLogout() {
+    this.authService.signOut();
+ this.router.navigate(['login']);
+  }
+  
+  
   ngOnInit(): void {
 
 this.user=this.authService.getUser()
@@ -30,4 +36,13 @@ this.user=this.authService.getUser()
     );
   }
   }
+
+
+  OnDestroy() {
+      this.subscr.unsubscribe();
+  }
+
+
+
+
 }

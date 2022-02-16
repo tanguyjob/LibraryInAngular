@@ -41,6 +41,9 @@ isAuth!:boolean;
     );
   }
 
+  ngOnDestroy() {
+    this.subscr.unsubscribe();
+  }
 
 
 

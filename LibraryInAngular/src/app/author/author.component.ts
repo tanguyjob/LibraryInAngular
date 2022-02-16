@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { AuthorModel } from '../models/AuthorModel';
 import { BookService } from '../services/book.service';
 
@@ -9,14 +10,19 @@ import { BookService } from '../services/book.service';
 })
 export class AuthorComponent implements OnInit {
 authors: AuthorModel[]= [];
+subscr!: Subscription;
   constructor(
     private bookService: BookService
   ) { }
 
   ngOnInit(): void {
-     this.bookService.getAuthors().subscribe(
+     this.subscr=this.bookService.getAuthors().subscribe(
       (value)=> this.authors=value
     );
+  }
+
+  ngOnDestroy() {
+    this.subscr.unsubscribe();
   }
 
 }
