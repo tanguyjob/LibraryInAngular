@@ -12,17 +12,22 @@ import { Subscription } from 'rxjs';
 })
 export class ProfileComponent implements OnInit {
 subscr!: Subscription;
-userBOs: UserBOModel[]=[];
+user?: UserBOModel;
   constructor(
     private authService: AuthentificationService
   ) { }
 
   ngOnInit(): void {
-     this.subscr = this.authService.getUserBOById(5).subscribe(
+
+this.user=this.authService.getUser()
+
+    if (this.user != null)
+{
+     this.subscr = this.authService.getUserBOById(+this.user.userId).subscribe(
       (v)=> {
-        this.userBOs=v;
+        this.user=v;
       }
     );
   }
-
+  }
 }
