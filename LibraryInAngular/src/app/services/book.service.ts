@@ -2,13 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BookModel } from '../models/BookModel';
 import { UtilService } from './util.service';
-// a effacer
-import { BookModel2 } from '../models/BookModel2';
 import { BookAuthorModel } from '../models/BookAuthorModel';
 import { LanguageModel} from '../models/LanguageModel';
 import { AuthorModel } from '../models/AuthorModel';
-import { UserBOModel } from '../models/UserBOModel'
-import { identifierName } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -61,28 +57,28 @@ getBookWriterById(id: number) {
 
 //LibraryAPIs
 getBookAuthor() {
-  return this.http.get<BookAuthorModel[]>("https://localhost:44334/api/Library/ProcedureBookAuthor");
+  return this.http.get<BookAuthorModel[]>(this.util.libraryApiUrl+"ProcedureBookAuthor");
 }
 
 getBookAuthorById(id: number) {
-  return this.http.get<BookAuthorModel[]>("https://localhost:44334/api/Library/ProcedureBookAuthorById?id=" + id);
+  return this.http.get<BookAuthorModel[]>(this.util.libraryApiUrl+"ProcedureBookAuthorById?id=" + id);
 }
 
 getLanguageById(id: number) {
-  return this.http.get<LanguageModel>("https://localhost:44334/api/Library/Language?id="+ id);
+  return this.http.get<LanguageModel>(this.util.libraryApiUrl+"Language?id="+ id);
 }
 
 getAuthors() {
-  return this.http.get<AuthorModel[]>("https://localhost:44334/api/Library/Authors");
+  return this.http.get<AuthorModel[]>(this.util.libraryApiUrl+"Authors");
 }
 
 getOneAuthor(id: number) {
-  return this.http.get<AuthorModel>("https://localhost:44334/api/Library/Author?id="+id);
+  return this.http.get<AuthorModel>(this.util.libraryApiUrl+"Author?id="+id);
 }
 
 getBookByAuthorId(id:number)
 {
-  return this.http.get<BookAuthorModel[]>("https://localhost:44334/api/Library/ProcedureBookByAuthorId?Id="+id);
+  return this.http.get<BookAuthorModel[]>(this.util.libraryApiUrl+"ProcedureBookByAuthorId?Id="+id);
 }
 
 

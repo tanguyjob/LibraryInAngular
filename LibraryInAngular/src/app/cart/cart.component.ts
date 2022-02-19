@@ -36,4 +36,5 @@ delete() {
   this.cartService.deleteCart();
   this.router.navigate(['catalog']);
 }
+
 }

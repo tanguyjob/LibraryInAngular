@@ -22,8 +22,8 @@ package=true;
 getPackage() {
   return this.package;
 }
-addToCart(ba:any) {
 
+addToCart(ba:any) {
 if (this.items.length !== 0)
 {
   var isPresent = this.items.some(function(el){ return el.id === ba.bookId});
@@ -38,13 +38,11 @@ if (this.items.length !== 0)
     return false;
   }
 }
-
 else {
   this.items.push(ba);
    this.basketcounter$.next(this.items.length);
    return true
-  }
- 
+  } 
 }
 
 

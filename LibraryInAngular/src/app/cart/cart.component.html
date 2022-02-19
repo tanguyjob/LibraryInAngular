@@ -2,20 +2,26 @@
     <h3>Panier</h3>
     <div *ngIf="items.length > 0">
         <div class="row line pb-4 mt-5">
-            <div class="col-4">
-                <h4>Titre</h4>
-            </div>
             <div class="col-6">
-                <h4>Auteur</h4>
+                <h5>Titre</h5>
+            </div>
+            <div class="col-3">
+                <h5>Nom</h5>
+            </div>
+            <div class="col-3">
+                <h5>Prénom</h5>
             </div>
         </div>
         <div class="line mt-3" *ngFor="let item of items">
             <div class="row">
-                <div class="col-4">
+                <div class="col-6">
                     {{ item.title }}
                 </div>
-                <div class="col-6">
-                    {{ item.writer }}
+                <div class="col-3">
+                    {{ item.firstname }}
+                </div>
+                <div class="col-3">
+                    {{ item.name }}
                 </div>
             </div>
         </div>
