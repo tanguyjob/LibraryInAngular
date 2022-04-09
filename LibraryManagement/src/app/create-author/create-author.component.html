@@ -1,0 +1,19 @@
+<h3 class="py-4">Créer un auteur</h3>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+
+    <div class="form-group">
+        <label>Nom: </label>
+        <input class="form-control form-control-lg" formControlName="name">
+    </div>
+
+    <div class="form-group">
+        <label>Prénom:</label>
+        <input class="form-control form-control-lg" formControlName="firstname">
+    </div>
+
+    <div class="form-group">
+        <label>Date de naissance:</label>
+        <input class="form-control form-control-lg" formControlName="birthdate">
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Créer</button>
+</form>

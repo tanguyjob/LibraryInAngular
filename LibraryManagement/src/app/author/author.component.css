@@ -1,0 +1,21 @@
+/* a {
+  color: rgba(17, 15, 15, 0.6);
+  text-decoration: none;
+} */
+
+.body {
+  height: 300px;
+}
+
+.line {
+  border-bottom: 1px solid white;
+  padding-bottom: 15px;
+}
+
+.row {
+  font-size: larger;
+}
+
+/* .scroll {
+  overflow-y: scroll;
+} */

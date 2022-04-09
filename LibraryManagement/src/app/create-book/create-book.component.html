@@ -1,0 +1,36 @@
+<!--https://www.tektutorialshub.com/angular/select-options-example-in-angular/
+--https://www.tektutorialshub.com/angular/angular-reactive-forms/
+--https://www.digitalocean.com/community/tutorials/angular-reactive-forms-introduction-->
+
+<h3 class="py-4">Créer un livre</h3>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+
+    <div class="form-group">
+        <label>Titre: </label>
+        <input class="form-control form-control-lg" formControlName="title">
+    </div>
+
+    <div class="form-group">
+        <label>date:</label>
+        <input class="form-control form-control-lg" formControlName="dateBook">
+    </div>
+
+    <div class="form-group">
+        <label>resume:</label>
+        <input class="form-control form-control-lg" formControlName="resume">
+    </div>
+    <div class="form-group">
+        <label>Language: &nbsp;&nbsp;&nbsp; </label>
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" formControlName="language">
+            <!-- <option selected>Français</option> -->
+            <option *ngFor="let language of languages" [ngValue]="language.languageId">{{ language.nameLanguage }}
+            </option>
+        </select>
+    </div>
+    <!-- <select formControlName="country">
+        <option [ngValue]="null" disabled>Select Country</option>
+        <option *ngFor="let country of countries" [ngValue]="country.id">{{country.name}}</option>
+    </select> -->
+    <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Créer</button>
+</form>

@@ -1,0 +1,13 @@
+.line {
+  border-bottom: 1px solid white;
+  padding-bottom: 15px;
+}
+
+.row {
+  font-size: larger;
+}
+
+.container {
+  height: 400px;
+  overflow-y: scroll;
+}
