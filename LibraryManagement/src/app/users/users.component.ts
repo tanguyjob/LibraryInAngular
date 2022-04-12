@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { BookAuthorService } from '../services/book-author.service';
+import { UserBOModel } from '../models/UserBOModel';
+import { Subscription } from 'rxjs';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -6,10 +10,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+users:UserBOModel[]=[];
+  subscribe!:Subscription
+  constructor(
+    private bookauthorService: BookAuthorService,
+    private router: Router
+  ) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
+    ngOnInit(): void {
+    this.subscribe = this.bookauthorService.getUserBO().subscribe(
+      (value)=>this.users=value
+    );
   }
 
 }

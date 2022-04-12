@@ -1,1 +1,39 @@
-<p>users works!</p>
+
+<div class="m-5">
+
+    <h3>Les utilisateurs</h3>
+
+<div class="container">
+    <div class="row line pb-4 mt-5">
+        <div class="col-2">
+            <h5>Nom</h5>
+        </div>
+        <div class="col-2">
+            <h5>Prénom</h5>
+        </div>
+        <div class="col-7">
+            <h5>Email</h5>
+        </div>
+    </div>
+
+    
+        <div class="line mt-3" *ngFor="let user of users">
+            <a>
+                <!-- <a routerLink="/book-author/{{ book.bookId }}"> -->
+                <div class="row">
+                    <div class="col-2">
+                        {{ user.firstname }}
+                    </div>
+    
+                    <div class="col-2">
+                        {{ user.name }}
+                    </div>
+    
+                    <div class="col-7">
+                        {{ user.email }}
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

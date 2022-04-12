@@ -1,6 +1,7 @@
 export class UserBOModel {
     userId!: number;
     email!: string;
+    firstname!:string;
     fK_User_Address!: number;
     fK_User_Profile!: number;
     fK_User_Suscription!:number;
