@@ -1,4 +1,6 @@
 book:date de parution
 profil: date de naissance
 
-créer un document emprunt
+créer un component créer une procédure qui renvoie que les éléments actifs
+
+essayer de retirer new { id = subscription.SubscriptionId }

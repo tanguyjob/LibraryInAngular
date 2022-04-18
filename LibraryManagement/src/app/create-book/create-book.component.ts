@@ -51,6 +51,7 @@ ngOnInit() {
     mybook.resume = form.value.resume;
     mybook.fkBookLanguage=form.value.language;
     mybook.activeBook=true;
+    console.log("ma langue",form.value.language);
     this.baSrv.postBook2(mybook).subscribe(
         () => {
           this.router.navigate(['/home']);
@@ -58,5 +59,6 @@ ngOnInit() {
       );;
     // console.log('Valid?', form.valid); // true or false
     // console.log('title', form.value.title);
+
   }
 }

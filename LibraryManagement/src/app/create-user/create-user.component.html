@@ -1,0 +1,39 @@
+
+<h3 class="py-4">Créer un utilisateur</h3>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+
+    <div class="form-group">
+        <label>Nom: </label>
+        <input class="form-control form-control-lg" formControlName="name">
+    </div>
+    <div class="form-group">
+        <label>Prénom: </label>
+        <input class="form-control form-control-lg" formControlName="firstname">
+    </div>
+    <div class="form-group">
+        <label>Email: </label>
+        <input class="form-control form-control-lg" formControlName="email">
+    </div>
+    <div class="form-group"> 
+        <label>Phone: </label>
+        <input class="form-control form-control-lg" formControlName="phone">
+    </div>
+    <div class="form-group">
+        <label>Addresse: &nbsp;&nbsp;&nbsp; </label>
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" formControlName="address">
+            <!-- <option selected>Français</option> -->
+            <option *ngFor="let address of addresses" [ngValue]="address.addressId">{{ address.street }} {{ address.addressId }}
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Abonnement: &nbsp;&nbsp;&nbsp; </label>
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" formControlName="subscription">
+            <!-- <option selected>Français</option> -->
+            <option *ngFor="let subscription of subscriptions" [ngValue]="subscription.subscriptionId">{{ subscription.nameProfile }}
+            </option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Créer</button>
+</form>

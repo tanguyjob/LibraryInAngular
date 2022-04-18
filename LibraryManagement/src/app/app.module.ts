@@ -17,6 +17,8 @@ import { AuthorComponent } from './author/author.component';
 import { CreateAuthorComponent } from './create-author/create-author.component';
 import { CreateBindingBookAuthorComponent } from './create-binding-book-author/create-binding-book-author.component';
 import { UsersComponent } from './users/users.component';
+import { CreateUserComponent } from './create-user/create-user.component';
+import { CreateAddressComponent } from './create-address/create-address.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { UsersComponent } from './users/users.component';
     AuthorComponent,
     CreateAuthorComponent,
     CreateBindingBookAuthorComponent,
-    UsersComponent
+    UsersComponent,
+    CreateUserComponent,
+    CreateAddressComponent
   ],
   imports: [
     FormsModule,
@@ -47,7 +51,9 @@ import { UsersComponent } from './users/users.component';
        { path: 'author', component: AuthorComponent},
        { path: 'create-author', component: CreateAuthorComponent },
        { path: 'book-author', component: CreateBindingBookAuthorComponent },
-       { path: 'users', component:UsersComponent }
+       { path: 'users', component:UsersComponent },
+       { path: 'create-user', component:CreateUserComponent },
+       { path: 'create-address', component:CreateAddressComponent },
     ])
   ],
   providers: [],

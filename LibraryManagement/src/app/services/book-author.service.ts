@@ -6,6 +6,9 @@ import { BookModel } from '../models/BookModel';
 import { AuthorModel } from '../models/AuthorModel';
 import { LanguageModel } from '../models/LanguageModel';
 import { UserBOModel } from '../models/UserBOModel';
+import { AddressModel} from '../models/AddressModel';
+import { UserModel } from '../models/UserModel';
+import { SubscriptionModel } from '../models/SubscriptionModel';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +26,14 @@ formData: BookModel= new BookModel();
   return this.http.get<BookAuthorBOModel[]>("https://localhost:44334/api/Library/ProcedureBookAuthor");
 }
 
+getAddress() {
+ return this.http.get<AddressModel[]>("https://localhost:44334/api/Library/Address");
+}
+
+getSubscription() {
+  return this.http.get<SubscriptionModel[]>("https://localhost:44334/api/Library/Subscriptions");
+}
+
  postBook() {
    return this.http.post(this.baseUrl + "PostBook",this.formData);
  }
@@ -31,10 +42,18 @@ postBook2(book: BookModel) {
   return this.http.post(this.baseUrl + "PostBook",book);
 }
 
+postAddress(address: AddressModel) {
+  console.log('je passe dans le postaddress de mon service');
+  return this.http.post(this.baseUrl + "PostAddress",address);
+}
+
 postBookAuthor(ba: BookAuthorModel) {
   return this.http.post("https://localhost:44334/api/Library/PostBookAuthor", ba);
 }
 
+postUser(user:UserModel) {
+  return this.http.post("https://localhost:44334/api/Library/PostUser",user);
+}
 getBook(){
  return this.http.get<BookModel[]>(this.baseUrl + "Books");
 }
