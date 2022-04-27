@@ -1,49 +1,45 @@
 <div class="body">
-<div class="m-5 py-4">
+    <div class="m-5 py-4">
+      <h3>Auteurs</h3>
+        <button type="button" class="mt-5 btn btn-primary" (click)="create()">Créer un nouvel auteur</button>&nbsp;&nbsp;&nbsp;
+        <button type="button" class="mt-5 btn btn-primary" (click)="bind()">Lier un auteur à un livre</button>
 
-    <h3>Auteurs</h3>
-
-
-    <button type="button" class="mt-5 btn btn-primary" (click)="create()">Créer un nouvel auteur</button>&nbsp;&nbsp;&nbsp;
-
-    <button type="button" class="mt-5 btn btn-primary" (click)="bind()">Lier un auteur à un livre</button>
-
-<div class="container">
-    <div class="row line pb-4 mt-5">
-        <div class="col-4">
-            <h5>Nom</h5>
+    <div class="container">
+        <div class="row line pb-4 mt-5">
+            <div class="col-4">
+                <h5>Nom</h5>
+            </div>
+            <div class="col-4">
+                <h5>Prénom</h5>
+            </div>
+            <div class="col-4">
+                <h5>Année de naissance</h5>
+            </div>
         </div>
-        <div class="col-4">
-            <h5>Prénom</h5>
-        </div>
-        <div class="col-4">
-            <h5>Année de naissance</h5>
-        </div>
-    </div>
 
-    <div class="scroll">    
-        <div class="line mt-3" *ngFor="let author of authors">
-            <a>
-                <!-- <a routerLink="/book-author/{{ book.bookId }}"> -->
-                <div class="row">
-                    <div class="col-4">
-                        {{ author.name }}
+        <div class="scroll">    
+            <div class="line mt-3" *ngFor="let author of authors">
+                <a>
+                    <!-- <a routerLink="/book-author/{{ book.bookId }}"> -->
+                    <div class="row">
+                        <div class="col-4">
+                            {{ author.name }}
+                        </div>
+
+                        <div class="col-4">
+                            {{ author.firstname }}
+                        </div>
+
+                        <div class="col-4">
+                            {{ author.birthdate | date: "d/M/yyyy" }}
+                        </div>
                     </div>
-
-                    <div class="col-4">
-                        {{ author.firstname }}
-                    </div>
-
-                    <div class="col-4">
-                        {{ author.birthdate | date: "d/M/yyyy" }}
-                    </div>
-                </div>
-            </a>
+                </a>
+            </div>
         </div>
-    </div>
-    
-    </div>
+        
+        </div>
 
 
-</div>
+    </div>
 </div>

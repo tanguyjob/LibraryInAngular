@@ -11,28 +11,28 @@ import { Router} from '@angular/router';
 })
 export class BookComponent implements OnInit {
 
-subscr!: Subscription;
-books:BookModel[]=[];
+  subscr!: Subscription;
+  books:BookModel[]=[];
   constructor(
-private bookauthorService: BookAuthorService,
-private router: Router
-  ) { }
+    private bookauthorService: BookAuthorService,
+    private router: Router
+    ) { }
 
-    create(){
+  create() {
       this.router.navigate(['create-book']);
-    }
- bind() {
+      }
+  bind() {
       this.router.navigate(['book-author']);
-    }
+      }
 
   ngOnInit(): void {
-    this.subscr = this.bookauthorService.getBook().subscribe(
-      (value)=>this.books=value
-    );
-  }
+      this.subscr = this.bookauthorService.getBook().subscribe(
+        (value)=>this.books=value
+        );
+      }
 
-    ngOnDestroy() {
+  ngOnDestroy() {
     this.subscr.unsubscribe();
-  }
+    }
 
 }

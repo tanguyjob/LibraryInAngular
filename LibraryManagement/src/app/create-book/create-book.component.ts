@@ -24,8 +24,8 @@ export class CreateBookComponent implements OnInit {
             private router: Router
   ) { }
 
-ngOnInit() {
-     this.myForm = this.fb.group({
+  ngOnInit() {
+      this.myForm = this.fb.group({
       title:'',
       dateBook:'',
       resume:'',
@@ -36,9 +36,6 @@ ngOnInit() {
       (value)=>this.languages=value
     );  
   }
-
-
-
 
   ngOnDestroy() {
     this.subscr.unsubscribe();
@@ -52,11 +49,11 @@ ngOnInit() {
     mybook.fkBookLanguage=form.value.language;
     mybook.activeBook=true;
     console.log("ma langue",form.value.language);
-    this.baSrv.postBook2(mybook).subscribe(
+    this.subscr=this.baSrv.postBook2(mybook).subscribe(
         () => {
           this.router.navigate(['/home']);
         }
-      );;
+      );
     // console.log('Valid?', form.valid); // true or false
     // console.log('title', form.value.title);
 

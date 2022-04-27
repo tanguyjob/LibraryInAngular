@@ -10,28 +10,27 @@ import { Router} from '@angular/router';
   styleUrls: ['./catalog.component.css']
 })
 export class CatalogComponent implements OnInit {
-
-subscr!: Subscription;
-bas:BookAuthorBOModel[]=[];
+  subscr!: Subscription;
+  bas:BookAuthorBOModel[]=[];
   constructor(
-private bookauthorService: BookAuthorService,
-private router: Router
-  ) { }
+    private bookauthorService: BookAuthorService,
+    private router: Router
+    ) { }
 
-    create(){
-      this.router.navigate(['create-book']);
-    }
+  create(){
+    this.router.navigate(['create-book']);
+   }
 
 
   ngOnInit(): void {
     this.subscr = this.bookauthorService.getBookAuthor().subscribe(
       (value)=>this.bas=value
-    );
-  }
+      );
+    }
 
-    ngOnDestroy() {
+  ngOnDestroy() {
     this.subscr.unsubscribe();
-  }
+    }
 }
 
 

@@ -10,20 +10,20 @@ import { Router} from '@angular/router';
   styleUrls: ['./author.component.css']
 })
 export class AuthorComponent implements OnInit {
-subscr!: Subscription;
-authors:AuthorModel[]=[];
+  subscr!: Subscription;
+  authors:AuthorModel[]=[];
   constructor(
     private bookauthorService: BookAuthorService,
     private router: Router
   ) { }
 
-    create(){
-      this.router.navigate(['create-author']);
-    }
+  create(){
+    this.router.navigate(['create-author']);
+  }
 
-    bind() {
-      this.router.navigate(['book-author']);
-    }
+  bind() {
+    this.router.navigate(['book-author']);
+  }
 
   ngOnInit(): void {
       this.subscr = this.bookauthorService.getAuthors().subscribe(
@@ -32,7 +32,7 @@ authors:AuthorModel[]=[];
   }
 
    ngOnDestroy() {
-    this.subscr.unsubscribe();
+      this.subscr.unsubscribe();
   }
 
 }

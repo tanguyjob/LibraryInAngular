@@ -20,34 +20,31 @@ export class CreateUserComponent implements OnInit {
  subscriptions: SubscriptionModel[]=[];
 
   constructor(
-            private fb: FormBuilder,
-            private baSrv: BookAuthorService,
-            private router: Router
-  ) { }
+  private fb: FormBuilder,
+  private baSrv: BookAuthorService,
+  private router: Router
+    ) { }
 
   ngOnInit(): void {
-      this.myForm = this.fb.group({
-      name:'',
-      firstname:'',
-      email:'',
-      phone:'', 
-      address:'',
-      subscription:'', 
+    this.myForm = this.fb.group({
+    name:'',
+    firstname:'',
+    email:'',
+    phone:'', 
+    address:'',
+    subscription:'', 
     });
 
-     this.subscr = this.baSrv.getAddress().subscribe(
+    this.subscr = this.baSrv.getAddress().subscribe(
       (value)=>this.addresses=value
     ); 
 
-this.subscr = this.baSrv.getSubscription().subscribe(
+    this.subscr = this.baSrv.getSubscription().subscribe(
       (value)=>this.subscriptions=value
     ); 
+    }
 
-
-  }
-
-
-   onSubmit(form: FormGroup) {
+    onSubmit(form: FormGroup) {
     let myuser = new UserModel();
     myuser.name = form.value.name;
     myuser.firstname = form.value.firstname;
@@ -60,7 +57,7 @@ this.subscr = this.baSrv.getSubscription().subscribe(
 
     console.log(form.value.subscription);
 
-    this.baSrv.postUser(myuser).subscribe(
+    this.subscr=this.baSrv.postUser(myuser).subscribe(
         () => {
           this.router.navigate(['/users']);
         }
