@@ -1,45 +1,33 @@
-<div class="m-5">
+ <div class="m-5">
 
-    <h3>Catalogue</h3>
+    <h3>Livres</h3> 
 
-
-    <button type="button" class="mt-5 btn btn-primary" (click)="create()">Créer un nouveau livre</button>&nbsp;&nbsp;&nbsp;
-
-    <button type="button" class="mt-5 btn btn-primary" (click)="bind()">Lier un auteur à un livre</button>
-
-     <div class="row line pb-4 mt-5">
+    <div class="row mb-5">
         <div class="col-3">
-            <h5>Titre</h5>
+             <button type="button" class="mt-5 btn btn-primary" (click)="create()">Créer un nouveau livre</button>
         </div>
-        <div class="col-2">
-            <h5>Date</h5>
-        </div>
-        <div class="col-7">
-            <h5>Résumé</h5>
+        <div class="col-6">
+            <button type="button" class="mt-5 btn btn-primary" (click)="bind()">Lier un auteur à un livre</button> 
         </div>
     </div>
-
-    <div class="container">
-        <div class="line mt-3" *ngFor="let book of books">
-            <a>
-            <!-- <a routerLink="/book-author/{{ book.bookId }}"> -->
-                <div class="row">
-                    <div class="col-3">
-                        {{ book.title }}
-                    </div>
-
-                    <div class="col-2">
-                        {{ book.dateBook | date: "d/M/yyyy" }}
-                    </div>
-
-                    <div class="col-7">
-                        {{ book.resume }}
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>    
+   
     
-
-</div> 
-
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Date</th>
+                <th>Résumé</th>
+            </tr>
+        </thead>
+        <tbody>
+         
+               <tr *ngFor="let book of books">
+                <td>{{ book.title }}</td>
+                <td>{{ book.dateBook | date: "d/M/yyyy" }}</td>
+                <td>{{ book.resume }}</td>
+               </tr>
+           
+        </tbody>
+    </table> 
+ </div>

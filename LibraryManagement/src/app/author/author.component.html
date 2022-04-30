@@ -1,9 +1,15 @@
 <div class="body">
     <div class="m-5 py-4">
       <h3>Auteurs</h3>
-        <button type="button" class="mt-5 btn btn-primary" (click)="create()">Créer un nouvel auteur</button>&nbsp;&nbsp;&nbsp;
-        <button type="button" class="mt-5 btn btn-primary" (click)="bind()">Lier un auteur à un livre</button>
-
+    <div class="row mb-5">
+        <div class="col-3">
+            <button type="button" class="mt-5 btn btn-primary" (click)="create()">Créer un nouvel auteur</button>
+        </div>
+        <div class="col-6">
+            <button type="button" class="mt-5 btn btn-primary" (click)="bind()">Lier un auteur à un livre</button>
+        </div>
+    </div>
+<!-- 
     <div class="container">
         <div class="row line pb-4 mt-5">
             <div class="col-4">
@@ -21,7 +27,7 @@
             <div class="line mt-3" *ngFor="let author of authors">
                 <a>
                     <!-- <a routerLink="/book-author/{{ book.bookId }}"> -->
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-4">
                             {{ author.name }}
                         </div>
@@ -41,5 +47,25 @@
         </div>
 
 
-    </div>
+    </div>  -->
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let author of authors">
+            <td>{{ author.name }}</td>
+            <td>{{ author.firstname }}</td>
+            <td>{{ author.birthdate | date: "d/M/yyyy" }}</td>
+        </tr>
+
+    </tbody>
+</table> -->
+
+
 </div>

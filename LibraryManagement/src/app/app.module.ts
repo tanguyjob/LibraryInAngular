@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { DataTablesModule } from 'angular-datatables';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -19,6 +20,7 @@ import { CreateBindingBookAuthorComponent } from './create-binding-book-author/c
 import { UsersComponent } from './users/users.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { CreateAddressComponent } from './create-address/create-address.component';
+import { ZeroConfigComponent } from './zero-config/zero-config.component';
 
 @NgModule({
   declarations: [
@@ -33,11 +35,13 @@ import { CreateAddressComponent } from './create-address/create-address.componen
     CreateBindingBookAuthorComponent,
     UsersComponent,
     CreateUserComponent,
-    CreateAddressComponent
+    CreateAddressComponent,
+    ZeroConfigComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
+    DataTablesModule,
     AppRoutingModule,
     ReactiveFormsModule,
     NgbModule,
@@ -54,9 +58,11 @@ import { CreateAddressComponent } from './create-address/create-address.componen
        { path: 'users', component:UsersComponent },
        { path: 'create-user', component:CreateUserComponent },
        { path: 'create-address', component:CreateAddressComponent },
+        {path: 'zero', component:ZeroConfigComponent} 
     ])
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+//https://www.delftstack.com/howto/angular/datatables-in-angular/

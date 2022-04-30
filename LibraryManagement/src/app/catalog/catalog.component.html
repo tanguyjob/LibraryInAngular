@@ -1,39 +1,25 @@
 <div class="m-5 p-5">
 
-    <h3>Catalogue</h3>
-
-<div class="container">
-
-    <div class="row line pb-4 mt-5">
-        <div class="col-6">
-            <h5>Titre</h5>
-        </div>
-        <div class="col-3">
-            <h5>Nom</h5>
-        </div>
-        <div class="col-3">
-            <h5>Prénom</h5>
-        </div>
-    </div>
+    <h3 class="mb-5">Catalogue</h3>
 
 
-        <div class="line mt-3" *ngFor="let ba of bas">
-            <a routerLink="/book-author/{{ ba.bookId }}">
-                <div class="row">
-                    <div class="col-6">
-                        {{ ba.title }}
-                    </div>
-
-                    <div class="col-3">
-                        {{ ba.name }}
-                    </div>
-
-                    <div class="col-3">
-                        {{ ba.firstname }}
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+            </tr>
+        </thead>
+        <tbody>
+    
+            <tr *ngFor="let ba of bas">
+                <td>{{ ba.title }}</td>
+                <td>{{ ba.name }}</td>
+                <td>{{ ba.firstname }}</td>
+            </tr>
+    
+        </tbody>
+    </table> 
 </div>
 
